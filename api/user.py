@@ -1,9 +1,9 @@
-from flask import *
+from flask import Flask
 import pickle
 import pandas as pd
 from sklearn.preprocessing import RobustScaler
 
-app=Flask(__name__, static_url_path='/static')
+app = Flask(__name__)
 model_d=pickle.load(open('model_for_d.pkl', 'rb'))
 model_s=pickle.load(open('model_for_s.pkl', 'rb'))
 @app.route('/')
@@ -43,9 +43,6 @@ def predict():
     else:
         return render_template('index.html')
         
-
-if __name__ == "__main__":
-    app.run(debug = True)
 
 
 
